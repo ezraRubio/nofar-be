@@ -9,6 +9,7 @@ try {
 const appConfig = {
   PORT: process.env.PORT,
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS,
+  URI: process.env.MONGO_URI,
 }
 
 try {
