@@ -12,6 +12,7 @@ export class Mongo {
             .then(client => Mongo.db = client.db())
     
     public static collection = <T>(name: string) => Mongo.db.collection<T>(name);
+    public static close = () => Mongo.client.close();
 
     public static mailingList = () => Mongo.collection(listEntry);
 }
