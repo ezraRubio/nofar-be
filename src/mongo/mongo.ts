@@ -1,4 +1,5 @@
 import { MongoClient, Db } from 'mongodb';
+import { ListEntry } from '../types';
 
 const listEntry = "listEntry";
 
@@ -14,5 +15,5 @@ export class Mongo {
     public static collection = <T>(name: string) => Mongo.db.collection<T>(name);
     public static close = () => Mongo.client.close();
 
-    public static mailingList = () => Mongo.collection(listEntry);
+    public static mailingList = () => Mongo.collection<ListEntry>(listEntry);
 }

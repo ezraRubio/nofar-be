@@ -9,10 +9,10 @@ export class MailingListController implements Controller {
     router = Router();
 
     constructor(private service: MailingListService) {
-        this.router.post(mailingList, (req: Request, res: Response)=>{})//this.addNewEntry().then()
+        this.router.post(mailingList, (req: Request, res: Response) => this.addNewEntry(req.body).then(r => res.json(r)))
     }
 
     addNewEntry(data: MailingListEntry){
-        //return from service 
+        return this.service.addNewEntry(data);
     }
 }
