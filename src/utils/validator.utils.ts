@@ -5,6 +5,7 @@ import {
   UnprocessableDataError,
 } from "../error/error.module";
 import {ErrorCodes} from "../error/error.codes";
+import { ErrorType } from "../error/error.types";
 
 function getStructuredValidationError(
   errorCode: ErrorCodes,
@@ -13,6 +14,8 @@ function getStructuredValidationError(
   return new UnprocessableDataError(
     errorCode,
     "validation_error",
+    400,
+    ErrorType.INVALID_ENTRY,
     error.inner.map((validationError) => mapValidationErrors(validationError))
   );
 }
