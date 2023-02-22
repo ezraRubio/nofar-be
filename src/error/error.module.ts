@@ -8,10 +8,10 @@ export interface SchemaValidationError {
 }
 
 export class AppError extends Error {
-  type: ErrorType;
+  status = 500;
+  code = ErrorCodes.INTERNAL_SERVER_ERROR;
+  type?: ErrorType;
   details?: unknown;
-  code: ErrorCodes;
-  status: number;
   errors?: SchemaValidationError[];
 }
 

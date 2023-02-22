@@ -15,6 +15,6 @@ export class MailingListController{
   }
 
   addNewEntry(data: MailingListEntry) {
-    return this.service.addNewEntry(data);
+      return this.service.addNewEntry(data);
   }
 }

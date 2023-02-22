@@ -17,13 +17,13 @@ export const httpErrorHandler: ErrorHandler = (
   response: Response,
   next: NextFunction
 ) => {
-  const status = error.status;
+  const status = (error as AppError)?.status || 500;
   const { code, details, errors } = error;
 
   const res = {
-    code: code || ErrorCodes.INTERNAL_SERVER_ERROR,
-    ...(details ? { details } : {}),
-    ...(errors ? { errors } : {}),
+    code: (error as AppError).code || ErrorCodes.INTERNAL_SERVER_ERROR,
+    details: (error as AppError).details,
+    errors: (error as AppError).errors || undefined
   };
 
   response.status(status).json(res);
