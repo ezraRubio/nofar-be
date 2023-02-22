@@ -1,4 +1,4 @@
-import { Filter, InsertOneOptions, InsertOneResult } from "mongodb";
+import { Filter } from "mongodb";
 import { ListEntry } from "../types";
 import { Mongo } from "../mongo/mongo";
 

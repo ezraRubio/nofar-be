@@ -13,6 +13,6 @@ export const newMailingListEntrySchema = yup.object({
       .max(50)
       .required()
       .typeError(ErrorType.INVALID_ENTRY),
-    phone: yup.string().trim().phone("IL").max(14).typeError(ErrorType.INVALID_ENTRY),
+    phone: yup.string().trim().phone("IL").max(10).typeError(ErrorType.INVALID_ENTRY),
   }),
 });

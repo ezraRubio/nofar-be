@@ -3,7 +3,8 @@ import { MailingListEntry } from "./mailing.list.model";
 import { MailingListRepository } from "./mailing.list.repository";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { v5 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
+import { DuplicateEntryError } from "../error/error.module";
 
 dayjs.extend(utc);
 
@@ -15,7 +16,7 @@ export class MailingListService {
       email: entry.email,
     });
 
-    if (!exists) throw new Error("mail already exists");
+    if (exists) throw new DuplicateEntryError();
 
     const newEntry: ListEntry = {
       ...entry,
