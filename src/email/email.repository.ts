@@ -1,4 +1,4 @@
-import { Mongo } from "@/mongo/mongo";
+import { Mongo } from "../mongo/mongo";
 import { Email } from "./email.model";
 
 export class EmailRepository {

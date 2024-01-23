@@ -1,10 +1,17 @@
+import config from "../../config";
 import nodemailer from "nodemailer";
 
 export class MailGateway {
   private _transporter: nodemailer.Transporter;
 
-  constructor(transporter: unknown) {
-    this._transporter = nodemailer.createTransport(transporter);
+  constructor() {
+    this._transporter = nodemailer.createTransport({
+      service: config.SERVICE,
+      auth: {
+        user: config.USER,
+        pass: config.PASS,
+      }
+    });
   }
 
   async sendMail(

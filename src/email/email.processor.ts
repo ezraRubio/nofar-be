@@ -1,6 +1,6 @@
 import { MailGateway } from "@/utils/mailer/gateway";
-import { Attachment, Email } from "./email.model";
-import { Mailer } from "@/utils/mailer/mailer";
+import { Attachment } from "./email.model";
+import { Mailer } from "../utils/mailer/mailer";
 
 export class EmailProcessor {
   private _sender: string;

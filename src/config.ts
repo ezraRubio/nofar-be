@@ -10,6 +10,10 @@ const appConfig = {
   PORT: process.env.PORT,
   ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS,
   URI: process.env.MONGO_URI,
+  MAIL_SENDER: process.env.EMAIL_SENDER,
+  USER: process.env.TRANSPORTER_USER,
+  PASS: process.env.TRANSPORTER_PASSWORD,
+  SERVICE: process.env.TRANSPORTER_SERVICE,
 }
 
 try {
