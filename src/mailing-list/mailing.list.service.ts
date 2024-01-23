@@ -5,11 +5,12 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { v4 as uuid } from "uuid";
 import { DuplicateEntryError } from "../error/error.module";
+import { EmailService } from "@/email/email.service";
 
 dayjs.extend(utc);
 
 export class MailingListService {
-  constructor(private mailingListRepository: MailingListRepository) {}
+  constructor(private mailingListRepository: MailingListRepository, private emailService: EmailService) {}
 
   addNewEntry = async (entry: MailingListEntry): Promise<ListEntry> => {
     const exists = await this.mailingListRepository.exists({
@@ -28,6 +29,8 @@ export class MailingListService {
       newEntry
     );
 
+    await this.emailService.sendEmail(entry.email);
+    
     return wasAcknowledged && newEntry;
   };
 }
