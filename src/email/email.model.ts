@@ -17,7 +17,7 @@ export interface Email {
 }
 
 export enum MailingListType {
-    GENERAl = "general",
+    GENERAL = "general",
     WEBINAR = "webinar",
     CLIENT = "client",
 }

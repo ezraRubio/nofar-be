@@ -18,24 +18,22 @@ export class EmailProcessor {
 
   async sendMail(
     receivers: string[],
-    email: Email,
-    layout: Mailer,
     attachment?: Attachment
   ) {
     const mailer = EmailProcessor.getBasicMailer();
-    const html = await layout.toHtmlString(undefined, {
+    const html = await mailer.toHtmlString(undefined, {
       receivers,
       templatePath: mailer.path,
       ...mailer.attachmentsObject,
     });
 
-    const attachments = [...layout.attachments, ...mailer.attachments];
+    const attachments = [...mailer.attachments];
     if (attachment)
       attachments.push({
         filename: attachment.fileName,
         content: attachment.content,
       });
-      
+
     const subject = "an email subject";
 
     await this._gateway.sendMail(

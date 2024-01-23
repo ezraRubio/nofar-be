@@ -1,7 +1,9 @@
 import { MongoClient, Db } from "mongodb";
 import { ListEntry } from "../types";
+import { Email } from "@/email/email.model";
 
 const listEntry = "list-entry";
+const mails = "mails";
 
 export class Mongo {
   public static client: MongoClient;
@@ -16,4 +18,5 @@ export class Mongo {
   public static close = () => Mongo.client.close();
 
   public static mailingList = () => Mongo.collection<ListEntry>(listEntry);
+  public static mails = () => Mongo.collection<Email>(mails);
 }
